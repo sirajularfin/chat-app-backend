@@ -1,6 +1,6 @@
-import { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_CREATED, HTTP_STATUS_OK } from '../constants/httpStatus.js';
-import { v4 as uuidv4 } from 'uuid';
 import { validationResult } from 'express-validator';
+import { v4 as uuidv4 } from 'uuid';
+import { HTTP_STATUS_BAD_REQUEST, HTTP_STATUS_CREATED, HTTP_STATUS_OK } from '../constants/httpStatus.js';
 
 /**
  *

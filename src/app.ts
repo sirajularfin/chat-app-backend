@@ -1,7 +1,7 @@
 import express from 'express';
 import userRoutes from './routes/userRoutes.js';
-import logger from './utils/logger.util.js';
 import { formatJson } from './utils/commons.util.js';
+import logger from './utils/logger.util.js';
 
 const app = express();
 // TODO: Fetch PORT from .env files
