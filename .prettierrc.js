@@ -1,0 +1,12 @@
+export default {
+  semi: true,
+  singleQuote: true,
+  bracketSpacing: true,
+  bracketSameLine: false,
+  tabWidth: 2,
+  trailingComma: 'all',
+  quoteProps: 'preserve',
+  endOfLine: 'auto',
+  arrowParens: 'avoid',
+  printWidth: 100,
+};
