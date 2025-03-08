@@ -7,15 +7,15 @@ const logger = (error: string, level: 'info' | 'log' | 'warn' | 'error' = 'log')
       break;
 
     case 'log':
-      console[level](`🪵 [LOG][${moment().format('HH:mm:ss')}] ${error}`);
+      console[level](`🪵  [LOG][${moment().format('HH:mm:ss')}] ${error}`);
       break;
 
     case 'warn':
-      console[level](`⚠️ [WARN][${moment().format('HH:mm:ss')}] ${error}`);
+      console[level](`⚠️  [WARN][${moment().format('HH:mm:ss')}] ${error}`);
       break;
 
     case 'error':
-      console[level](`🚨 [ERROR][${moment().format('HH:mm:ss')}] ${error}`);
+      console[level](`🚨  [ERROR][${moment().format('HH:mm:ss')}] ${error}`);
   }
 };
 
