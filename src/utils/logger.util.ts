@@ -15,7 +15,7 @@ const logger = (error: string, level: 'info' | 'log' | 'warn' | 'error' = 'log')
       break;
 
     case 'error':
-      console[level](`🚨  [ERROR][${moment().format('HH:mm:ss')}] ${error}`);
+      console[level](`🚨 [ERROR][${moment().format('HH:mm:ss')}] ${error}`);
   }
 };
 

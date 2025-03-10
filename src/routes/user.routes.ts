@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { ROUTE_LOGIN, ROUTE_REGISTER, ROUTE_USER } from '../constants/routes.js';
-import * as userController from '../controllers/userController.js';
-import registrationFormValidator from '../validations/registrationFormValidator.js';
+import * as userController from '../controllers/user.controller.js';
+import registrationFormValidator from '../validators/userRegistration.validator.js';
 
 const router = Router();
 
