@@ -1,56 +1,41 @@
-import {
-  HTTP_STATUS_BAD_REQUEST,
-  HTTP_STATUS_CREATED,
-  HTTP_STATUS_OK,
-} from '../constants/httpStatus.js';
-import { validationResult } from 'express-validator';
-import User from '../models/user.model.js';
+import User from '../schemas/user.schema.js';
+import HttpStatus from '../constants/httpStatus.js';
+import { Request, Response, NextFunction } from 'express';
+import { checkRequestErrors } from '../utils/commons.util.js';
 
 /**
- *
+ * Registers a new user
  * @param req
  * @param res
  * @param next
  */
-export const registerUser = (req: any, res: any, next: any) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(HTTP_STATUS_BAD_REQUEST).json({ errors: errors.array() });
-  }
+export const registerUser = (req: Request, res: Response, next: NextFunction) => {
+  checkRequestErrors(req, res);
 
   const { firstName, lastName, email, password } = req.body;
-
-  const user = new User(firstName, lastName, email, password);
+  const user = new User({ firstName, lastName, email, password });
   user
     .save()
     .then(response => {
-      res.status(HTTP_STATUS_CREATED).json(response);
+      res.status(HttpStatus.CREATED).json(response);
     })
     .catch(err => {
-      res.status(HTTP_STATUS_BAD_REQUEST).json({ error: err });
+      res.status(HttpStatus.BAD_REQUEST).json({ error: err });
     });
-
-  // res.status(HTTP_STATUS_CREATED).json({
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   password,
-  //   createdAt: new Date().toISOString(),
-  // });
 };
 
-export const loginUser = (req: any, res: any, next: any) => {
-  res.status(HTTP_STATUS_OK).json({
-    users: [{ name: 'Sirajul Arfin', rollNo: '20MCA058' }],
-  });
-};
-
-export const getAllUsers = (req: any, res: any, next: any) => {
-  const users = User.fetchAll()
+/**
+ * Fetches all users
+ * @param req
+ * @param res
+ * @param next
+ */
+export const getAllUsers = (req: Request, res: Response, next: NextFunction) => {
+  const users = User.find()
     .then(users => {
-      res.status(HTTP_STATUS_OK).json(users);
+      res.status(HttpStatus.OK).json(users);
     })
     .catch(err => {
-      res.status(HTTP_STATUS_BAD_REQUEST).json({ error: err });
+      res.status(HttpStatus.BAD_REQUEST).json({ error: err });
     });
 };
