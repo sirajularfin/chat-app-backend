@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { formatJson } from '../utils/commons.util.js';
+import { formatJson, checkIfPostOrPutRequest } from '../utils/commons.util.js';
 import logger from '../utils/logger.util.js';
 
 /**
@@ -9,7 +9,7 @@ import logger from '../utils/logger.util.js';
  * @param next - Next function
  */
 const httpHeadersMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  if (req.method === 'POST' || req.method === 'PUT') {
+  if (checkIfPostOrPutRequest(req)) {
     logger(`[ApiRequest] Body: ${formatJson(req.body)}`);
   }
 
